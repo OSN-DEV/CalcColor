@@ -1,0 +1,17 @@
+﻿<Window x:Class="CalcColor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalcColor"
+        xmlns:u="clr-namespace:CalcColor.Component"
+        mc:Ignorable="d"
+        Title="Calc Color" Height="210" Width="360" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+    <StackPanel Orientation="Vertical" Margin="10">
+        <u:ColorEditor ReadOnly="false" x:Name="cThins2"/>
+        <u:ColorEditor ReadOnly="true" x:Name="cThins1"/>
+        <u:ColorEditor ColorEvent="ColorEditor_ColorEvent" Hex="{Binding Hex}"/>
+        <u:ColorEditor ReadOnly="true" x:Name="cDark1"/>
+        <u:ColorEditor ReadOnly="true" x:Name="cDark2"/>
+    </StackPanel>
+</Window>
