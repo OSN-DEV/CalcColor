@@ -22,10 +22,10 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <TextBlock Name="cColor" Width="20" Height="20" Grid.Column="0" HorizontalAlignment="Left"  />
-        <u:CustomTextBox x:Name="cValue" Grid.Column="1" ImeMode="Disabled" MaxLength="6" Height="30"  Width="60" Text="123456" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <u:CustomTextBox x:Name="cValue" Grid.Column="1" ImeMode="Disabled" MaxLength="6" Height="30"  Width="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <u:ImageButton x:Name="cCopy" Grid.Column="2" Height="20" Width="20" Margin="5,0,0,0"
                         DefaultImage="{StaticResource CopyD}"
                         HoverImage="{StaticResource CopyO}"
-                        PressedImage="{StaticResource CopyP}" />
+                        PressedImage="{StaticResource CopyP}" IsTabStop="False" />
     </Grid>
 </UserControl>
