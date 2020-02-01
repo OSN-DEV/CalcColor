@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="CalcColor.Component.HexColor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CalcColor.Component"
+             xmlns:u="clr-namespace:CalcColor.Component"
+             mc:Ignorable="d" 
+             d:DesignHeight="32" d:DesignWidth="110" Width="110" Height="32">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CalcColor;component/Res/ImageDef.xaml"  />
+                <ResourceDictionary Source="Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="cColor" Width="20" Height="20" Grid.Column="0" HorizontalAlignment="Left"  />
+        <u:CustomTextBox x:Name="cValue" Grid.Column="1" ImeMode="Disabled" MaxLength="6" Height="30"  Width="60" Text="123456" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <u:ImageButton x:Name="cCopy" Grid.Column="2" Height="20" Width="20" Margin="5,0,0,0"
+                        DefaultImage="{StaticResource CopyD}"
+                        HoverImage="{StaticResource CopyO}"
+                        PressedImage="{StaticResource CopyP}" />
+    </Grid>
+</UserControl>

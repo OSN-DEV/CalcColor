@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <BitmapImage x:Key="CopyD" UriSource="CopyD.png" />
+    <BitmapImage x:Key="CopyO" UriSource="CopyO.png" />
+    <BitmapImage x:Key="CopyP" UriSource="CopyP.png" />
+</ResourceDictionary>
