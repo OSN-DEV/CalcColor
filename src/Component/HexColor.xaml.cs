@@ -131,7 +131,7 @@ namespace CalcColor.Component {
             if (value.Length != 6 && value.Length != 7) {
                 return "";
             }
-            var val = value;
+            var val = value.ToLower();
             if (value.Length == 7) {
                 val = value.Substring(1);
             }
