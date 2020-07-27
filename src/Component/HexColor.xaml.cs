@@ -77,11 +77,12 @@ namespace CalcColor.Component {
         /// show color
         /// </summary>
         private void ShowColor() {
-            if (this.cValue.Text.Length < 6 || !this.IsNumeric(this.cValue.Text)) {
+            var val = ConvertString(this.cValue.Text);
+            if (val.Length != 6) {
                 this.cColor.Background = Brushes.Transparent;
             } else {
                 this.cColor.Background = new SolidColorBrush(
-                    (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#" + this.cValue.Text));
+                    (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#" + val));
             }
         }
 
@@ -89,17 +90,18 @@ namespace CalcColor.Component {
         /// raise color changed event
         /// </summary>
         private void RaiseColorEvent() {
-            if (this.cValue.Text.Length < 6 || !this.IsNumeric(this.cValue.Text)) {
+            var val = ConvertString(this.cValue.Text);
+            if (val.Length != 6) {
                 return;
             }
 
-            if (this._oldValue == this.cValue.Text) {
+            if (this._oldValue == val) {
                 return;
             }
-            this._oldValue = this.cValue.Text;
+            this._oldValue = val;
 
             var args = new ColorEventArgs();
-            var hex = this.cValue.Text;
+            var hex = val;
             args.Hex = hex;
             args.R = Convert.ToInt32(hex.Substring(0, 2), 16).ToString();
             args.G = Convert.ToInt32(hex.Substring(2, 2), 16).ToString();
@@ -118,14 +120,26 @@ namespace CalcColor.Component {
             }
         }
 
+
+        Regex regex = new Regex("[0-9a-f]");
         /// <summary>
-        /// check value is numric
+        /// convert hex string without #
         /// </summary>
-        /// <param name="value">true:numeric, false:otherwise</param>
+        /// <param name="value">return blank if invalid string</param>
         /// <returns></returns>
-        private bool IsNumeric(string value) {
-            int n;
-            return int.TryParse(value, out n);
+        private string ConvertString(string value) { 
+            if (value.Length != 6 && value.Length != 7) {
+                return "";
+            }
+            var val = value;
+            if (value.Length == 7) {
+                val = value.Substring(1);
+            }
+
+            if (!regex.Match(val).Success || regex.Matches(val).Count != 6) {
+                val = "";
+            }
+            return val;
         }
         #endregion
 
