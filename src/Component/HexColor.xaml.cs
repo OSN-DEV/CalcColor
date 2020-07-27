@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CalcColor.Component {
     /// <summary>
@@ -86,7 +77,7 @@ namespace CalcColor.Component {
         /// show color
         /// </summary>
         private void ShowColor() {
-            if (this.cValue.Text.Length < 6) {
+            if (this.cValue.Text.Length < 6 || !this.IsNumeric(this.cValue.Text)) {
                 this.cColor.Background = Brushes.Transparent;
             } else {
                 this.cColor.Background = new SolidColorBrush(
@@ -98,7 +89,7 @@ namespace CalcColor.Component {
         /// raise color changed event
         /// </summary>
         private void RaiseColorEvent() {
-            if (this.cValue.Text.Length < 6) {
+            if (this.cValue.Text.Length < 6 || !this.IsNumeric(this.cValue.Text)) {
                 return;
             }
 
@@ -125,6 +116,16 @@ namespace CalcColor.Component {
                 e.Handled = true;
                 return;
             }
+        }
+
+        /// <summary>
+        /// check value is numric
+        /// </summary>
+        /// <param name="value">true:numeric, false:otherwise</param>
+        /// <returns></returns>
+        private bool IsNumeric(string value) {
+            int n;
+            return int.TryParse(value, out n);
         }
         #endregion
 
